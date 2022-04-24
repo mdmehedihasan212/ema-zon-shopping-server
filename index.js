@@ -24,6 +24,11 @@ async function run() {
             const products = await cursor.toArray();
             res.send(products);
         })
+
+        app.get('/productCount', async (req, res) => {
+            const count = await productCollection.estimatedDocumentCount();
+            res.send({ count });
+        })
     }
     finally {
 
